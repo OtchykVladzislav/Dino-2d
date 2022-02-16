@@ -38,12 +38,10 @@ function jump() {
 }
 
 function save (score){
-    for(let i = 0; i<window.localStorage.length; i++) {
-        let key = window.localStorage.key(i);
-        if(window.localStorage.getItem(key) < score){
-            window.localStorage.clear();
-            window.localStorage.setItem('HighScore',score);
-        }
+    window.localStorage.getItem('HighScore', 0)
+    if(window.localStorage.getItem('HighScore') < score){
+        window.localStorage.removeItem('HighScore');
+        window.localStorage.setItem('HighScore',score);
     }
     return window.localStorage.getItem('HighScore');
 }
